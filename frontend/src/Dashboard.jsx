@@ -20,7 +20,7 @@ function App() {
     }
   }, [navigate]);
 
-  // Fetch items from API
+  
   useEffect(() => {
     axios
       .get(API_URL)
@@ -28,7 +28,6 @@ function App() {
       .catch((error) => console.error("Error Fetching Items:", error));
   }, []);
 
-  // Add item to API
   const addItem = () => {
     if (!newItem.trim()) return;
 
@@ -45,7 +44,6 @@ function App() {
       .catch((error) => console.error("Error Adding Item:", error));
   };
 
-  // Update item in API
   const updateItem = (id, name) => {
     axios
       .put(`${API_URL}/${id}`, { name })
@@ -57,7 +55,6 @@ function App() {
       .catch((error) => console.error("Error Updating Item:", error));
   };
 
-  // Delete item from API
   const deleteItem = (id) => {
     axios
       .delete(`${API_URL}/${id}`)
