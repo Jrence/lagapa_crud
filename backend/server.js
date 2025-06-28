@@ -80,7 +80,7 @@ app.post("/login", (req, res) => {
     });
 });
 
-//===================================================================
+
 
 
 const items = [
@@ -90,19 +90,16 @@ const items = [
   {id: 4, name: 'item 4'},
 ]
 
-// GET: retrieve all items
 app.get("/api/items", (req, res) => {
   res.json(items);
 });
 
-//POST: add new items to the items
 app.post("/api/items", (req, res) => {
   const newItem = {id: items.length + 1, name: req.body.name};
   items.push(newItem);
   res.status(201).json(newItem);
 });
 
-//PUT: update the items
 app.put('/api/items/:id', (req, res) => {
   const item = items.find(i => i.id === parseInt(req.params.id));
   if (!item) return res.status(404).json({massage: 'Item not founs'});
@@ -110,7 +107,6 @@ app.put('/api/items/:id', (req, res) => {
   res.json(item);
 });
 
-// DELETE: delete an item
 app.delete('/api/items/:id', (req, res) => {
   const index = items.findIndex(i => i.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).json({massage: 'Item not found'});
